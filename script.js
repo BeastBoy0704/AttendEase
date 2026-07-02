@@ -208,3 +208,10 @@ installBtn.addEventListener("click", async () => {
     deferredPrompt = null;
 
 });
+window.addEventListener("appinstalled", () => {
+
+    installBtn.style.display = "none";
+
+    console.log("🎉 AttendEase Installed Successfully");
+
+});
