@@ -705,3 +705,97 @@ body.dark-mode #themeBtn{
     color:#facc15;
 
 }
+/* ===========================
+   Animated Stars
+=========================== */
+
+.stars{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+body.dark-mode .stars{
+
+    display:block;
+
+}
+
+.stars span{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:0 0 12px white;
+
+    animation:floatStars 8s ease-in-out infinite;
+
+}
+
+.stars span:nth-child(1){
+    top:10%;
+    left:15%;
+}
+
+.stars span:nth-child(2){
+    top:25%;
+    left:75%;
+}
+
+.stars span:nth-child(3){
+    top:50%;
+    left:30%;
+}
+
+.stars span:nth-child(4){
+    top:70%;
+    left:80%;
+}
+
+.stars span:nth-child(5){
+    top:85%;
+    left:20%;
+}
+
+.stars span:nth-child(6){
+    top:40%;
+    left:55%;
+}
+
+@keyframes floatStars{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:translateY(-20px);
+
+        opacity:1;
+
+    }
+
+}
