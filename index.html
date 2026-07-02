@@ -11,6 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#2563eb">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AttendEase">
 </head>
 
 <body>
@@ -62,33 +68,37 @@
 
             <div class="button-group">
 
-                <button onclick="calculateAttendance()">
-                    Calculate
-                </button>
+    <button onclick="calculateAttendance()">
+        Calculate
+    </button>
 
-                <button class="reset-btn" onclick="resetForm()">
-                    Reset
-                </button>
+    <button class="reset-btn" onclick="resetForm()">
+        Reset
+    </button>
 
-            </div>
+</div>
+
+<button id="installBtn" style="display:none;">
+    📲 Install AttendEase
+</button>
+
 
             <div class="results">
 
-                <div id="result" class="result-card">
-                    Your Result Appears Here
-                </div>
+    <div id="result" class="result-card">
+        Your Result Appears Here
+    </div>
 
-                <div class="progress-container">
-                    <div id="progressBar" class="progress-bar"></div>
-                </div>
+    <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
 
-                <div id="bunkResult" class="result-card"></div>
+    <div id="bunkResult" class="result-card"></div>
 
-                <div id="needResult" class="result-card"></div>
+    <div id="needResult" class="result-card"></div>
 
-            </div>
+</div>
 
-        </div>
 
         <footer>
 
@@ -101,6 +111,22 @@
     </div>
 
     <script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      const registration = await navigator.serviceWorker.register("/service-worker.js");
+      console.log("✅ Service Worker Registered", registration);
+
+      const ready = await navigator.serviceWorker.ready;
+      console.log("✅ Service Worker Ready", ready);
+    } catch (err) {
+      console.error("❌ Service Worker Registration Failed", err);
+    }
+  });
+}
+</script>
 
 </body>
 

@@ -181,3 +181,30 @@ function resetForm(){
     "linear-gradient(90deg,#22c55e,#3b82f6)";
 
 }
+let deferredPrompt;
+
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    installBtn.style.display = "block";
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+    installBtn.style.display = "none";
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    console.log(outcome);
+
+    deferredPrompt = null;
+
+});

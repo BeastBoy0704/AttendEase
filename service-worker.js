@@ -1,14 +1,14 @@
 const CACHE_NAME = "attendease-v2";
 
 const FILES_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./favicon.png"
+  "/",
+  "/index.html",
+  "/style.css",
+  "/script.js",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/favicon.png"
 ];
 
 self.addEventListener("install", (event) => {
