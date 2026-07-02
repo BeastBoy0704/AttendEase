@@ -666,3 +666,42 @@ color:white;
     box-shadow: 0 12px 30px rgba(37,99,235,.35);
 
 }
+/* ===========================
+   Dark Mode
+=========================== */
+
+body.dark-mode{
+
+    background:#050816;
+
+    transition:0.5s ease;
+
+}
+
+body.dark-mode .card{
+
+    background:rgba(15,23,42,.75);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark-mode .circle1{
+
+    background:#2563eb;
+
+}
+
+body.dark-mode .circle2{
+
+    background:#7c3aed;
+
+}
+
+body.dark-mode #themeBtn{
+
+    background:#1e293b;
+
+    color:#facc15;
+
+}
