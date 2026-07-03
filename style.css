@@ -919,3 +919,106 @@ body.dark-mode::before{
     font-weight: 700;
 
 }
+/* ===========================
+   Attendance History
+=========================== */
+
+.history-card{
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.history-card h2{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    font-size:22px;
+
+}
+
+#historyList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.history-item{
+
+    background:rgba(255,255,255,.08);
+
+    border-left:4px solid #3b82f6;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    transition:.3s;
+
+}
+
+.history-item:hover{
+
+    transform:translateX(5px);
+
+    background:rgba(255,255,255,.15);
+
+}
+#clearHistoryBtn{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#clearHistoryBtn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+}

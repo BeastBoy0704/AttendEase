@@ -167,6 +167,27 @@ else{
     `;
 
 }   
+// ==========================
+// Save Attendance History
+// ==========================
+
+const historyList = document.getElementById("historyList");
+
+let history = JSON.parse(localStorage.getItem("attendanceHistory")) || [];
+
+history.unshift({
+    date: new Date().toLocaleString(),
+    percentage: percentage.toFixed(2),
+    bunk: bunk,
+    need: need
+});
+
+// Keep only latest 5 records
+history = history.slice(0, 5);
+
+localStorage.setItem("attendanceHistory", JSON.stringify(history));
+
+loadHistory();
 }
 function resetForm(){
 
@@ -266,3 +287,56 @@ themeBtn.addEventListener("click", () => {
     }
 
 });
+function loadHistory(){
+
+    const historyList = document.getElementById("historyList");
+
+    const history =
+        JSON.parse(localStorage.getItem("attendanceHistory")) || [];
+
+    if(history.length === 0){
+
+        historyList.innerHTML = "No History Yet";
+
+        return;
+
+    }
+    // Load history when page opens
+loadHistory();
+
+// Clear History Button
+const clearBtn = document.getElementById("clearHistoryBtn");
+
+clearBtn.addEventListener("click", () => {
+
+    if(confirm("Clear all attendance history?")){
+
+        localStorage.removeItem("attendanceHistory");
+
+        loadHistory();
+
+    }
+
+});
+
+    historyList.innerHTML = "";
+
+    history.forEach(item => {
+
+        historyList.innerHTML += `
+        <div class="history-item">
+
+            <strong>${item.date}</strong><br>
+
+            📊 Attendance : ${item.percentage}%<br>
+
+            😎 Can Bunk : ${item.bunk}<br>
+
+            📚 Need : ${item.need}
+
+        </div>
+        `;
+
+    });
+
+}
