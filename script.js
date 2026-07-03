@@ -1,5 +1,7 @@
 function calculateAttendance() {
-
+console.log(document.getElementById("progressCircle"));
+console.log(document.getElementById("progressText"));
+console.log(document.getElementById("result"));
     let attended = Number(document.getElementById("attended").value);
 
     let total = Number(document.getElementById("total").value);
@@ -12,7 +14,6 @@ function calculateAttendance() {
 
     let needResult = document.getElementById("needResult");
 
-    let progressBar = document.getElementById("progressBar");
 
     if (attended <= 0 || total <= 0) {
 
@@ -25,10 +26,6 @@ function calculateAttendance() {
 
     needResult.innerHTML = "";
 
-    progressBar.style.width = "0%";
-
-    progressBar.style.background =
-    "linear-gradient(90deg,#22c55e,#3b82f6)";
 
     return;
 }
@@ -44,33 +41,45 @@ function calculateAttendance() {
 
     needResult.innerHTML = "";
 
-    progressBar.style.width = "0%";
+    const circle = document.getElementById("progressCircle");
+const text = document.getElementById("progressText");
 
-    progressBar.style.background =
-    "linear-gradient(90deg,#22c55e,#3b82f6)";
+const radius = 70;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+text.innerHTML = "0%";
 
     return;
 }
 
     let percentage = (attended / total) * 100;
+    const circle = document.getElementById("progressCircle");
+const text = document.getElementById("progressText");
 
-progressBar.style.width = percentage + "%";
+const radius = 70;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset =
+    circumference - (percentage / 100) * circumference;
+
+text.innerHTML = percentage.toFixed(1) + "%";
+
 if (percentage < 75) {
 
-    progressBar.style.background =
-    "linear-gradient(90deg,#ef4444,#dc2626)";
+    circle.style.stroke = "#ef4444";
 
 }
 else if (percentage < 90) {
 
-    progressBar.style.background =
-    "linear-gradient(90deg,#facc15,#f59e0b)";
+    circle.style.stroke = "#facc15";
 
 }
 else {
 
-    progressBar.style.background =
-    "linear-gradient(90deg,#22c55e,#16a34a)";
+    circle.style.stroke = "#22c55e";
 
 }
     let message = "";
@@ -173,12 +182,15 @@ function resetForm(){
 
     document.getElementById("needResult").innerHTML = "";
 
-    let progressBar = document.getElementById("progressBar");
+    const circle = document.getElementById("progressCircle");
+const text = document.getElementById("progressText");
 
-    progressBar.style.width = "0%";
+const radius = 70;
+const circumference = 2 * Math.PI * radius;
 
-    progressBar.style.background =
-    "linear-gradient(90deg,#22c55e,#3b82f6)";
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+text.innerHTML = "0%";
 
 }
 let deferredPrompt;
