@@ -104,9 +104,32 @@
         Your Result Appears Here
     </div>
 
-    <div class="progress-container">
-        <div id="progressBar" class="progress-bar"></div>
+    <div class="progress-ring">
+
+    <svg width="180" height="180" viewBox="0 0 180 180">
+
+        <circle
+            class="progress-bg"
+            cx="90"
+            cy="90"
+            r="70">
+        </circle>
+
+        <circle
+            id="progressCircle"
+            class="progress-circle"
+            cx="90"
+            cy="90"
+            r="70">
+        </circle>
+
+    </svg>
+
+    <div id="progressText" class="progress-text">
+        0%
     </div>
+
+</div>
 
     <div id="bunkResult" class="result-card"></div>
 
