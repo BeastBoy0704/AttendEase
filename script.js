@@ -353,6 +353,10 @@ function loadHistory(){
 
     const historyList = document.getElementById("historyList");
 
+    if(!historyList){
+        return;
+    }
+
     const history =
         JSON.parse(localStorage.getItem("attendanceHistory")) || [];
 
@@ -363,7 +367,6 @@ function loadHistory(){
         return;
 
     }
-   
 
     historyList.innerHTML = "";
 
@@ -371,18 +374,12 @@ function loadHistory(){
 
         historyList.innerHTML += `
         <div class="history-item">
-
             <strong>${item.date}</strong><br>
-
             📊 Attendance : ${item.percentage}%<br>
-
             😎 Can Bunk : ${item.bunk}<br>
-
             📚 Need : ${item.need}
-
         </div>
         `;
-
     });
 
 }
