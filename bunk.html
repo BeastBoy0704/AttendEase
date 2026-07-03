@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AttendEase | Smart Attendance Calculator</title>
+    <title>Bunk Calculator | AttendEase</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -29,7 +29,7 @@
 
         <h1>AttendEase</h1>
 
-        <p>Smart Attendance Calculator</p>
+        <p>Smart Bunk Calculator</p>
 
         <div class="loader-dots">
             <span></span>
@@ -65,41 +65,117 @@
     <div class="container">
 
         <h1>🎓 AttendEase</h1>
-<p class="subtitle">
-    Smart Attendance Assistant
-</p>
+        <a href="index.html" class="back-btn">⬅ Back to Dashboard</a>
 
-<p class="tagline">
-    Choose a feature below
-</p>
-<div class="dashboard">
+        <p class="subtitle">
+            Smart Attendance Calculator
+        </p>
 
-    <a href="calculator.html" class="feature-card">
-        <span>📊</span>
-        <h2>Attendance Calculator</h2>
-        <p>Calculate attendance instantly</p>
-    </a>
+        <p class="tagline">
+            Plan Your Bunks Smartly
+        </p>
 
-    <a href="bunk.html" class="feature-card">
-        <span>😎</span>
-        <h2>Bunk Calculator</h2>
-        <p>Coming Soon</p>
-    </a>
+        <div id="calculator" class="tab-content active">
+        <div class="card">
 
-    <a href="#" class="feature-card">
-        <span>📜</span>
-        <h2>History</h2>
-        <p>Coming Soon</p>
-    </a>
+            <label>📚 Classes Attended</label>
+              <input type="number" id="attended" placeholder="Enter attended classes">
 
-    <a href="#" class="feature-card">
-        <span>📈</span>
-        <h2>Analytics</h2>
-        <p>Coming Soon</p>
-    </a>
+
+            <label>📖 Total Classes</label>
+<input type="number" id="total" placeholder="Enter total classes">
+
+            <label>🎯 Target Attendance</label>
+
+            <select id="target">
+
+                <option value="75">75%</option>
+                <option value="80">80%</option>
+                <option value="85">85%</option>
+                <option value="90">90%</option>
+                <option value="95">95%</option>
+
+            </select>
+
+            <div class="button-group">
+
+    <button onclick="calculateBunk()">
+    Calculate
+</button>
+
+    <button class="reset-btn" onclick="resetForm()">
+        Reset
+    </button>
 
 </div>
-       
+
+<button id="installBtn" style="display:none;">
+    📲 Install AttendEase
+</button>
+
+
+            <div class="results">
+
+    <div id="result" class="result-card">
+        Your Result Appears Here
+    </div>
+
+    <div class="progress-ring">
+
+    <svg width="180" height="180" viewBox="0 0 180 180">
+
+        <circle
+            class="progress-bg"
+            cx="90"
+            cy="90"
+            r="70">
+        </circle>
+
+        <circle
+            id="progressCircle"
+            class="progress-circle"
+            cx="90"
+            cy="90"
+            r="70">
+        </circle>
+
+    </svg>
+
+    <div id="progressText" class="progress-text">
+        0%
+    </div>
+
+</div>
+
+    <div id="bunkResult" class="result-card"></div>
+
+
+<div class="history-card">
+
+    <h2>📜 Attendance History</h2>
+    <button id="clearHistoryBtn">
+    🗑 Clear History
+</button>
+
+    <div id="historyList">
+        No History Yet
+    </div>
+
+</div>
+<!-- Analytics Dashboard -->
+
+
+
+</div>
+<!-- Goal Tracker -->
+
+
+</div> <!-- results -->
+
+</div> <!-- card -->
+
+</div> <!-- calculator -->
+
 
         <footer>
 

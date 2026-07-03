@@ -1,7 +1,5 @@
 function calculateAttendance() {
-console.log(document.getElementById("progressCircle"));
-console.log(document.getElementById("progressText"));
-console.log(document.getElementById("result"));
+
     let attended = Number(document.getElementById("attended").value);
 
     let total = Number(document.getElementById("total").value);
@@ -171,10 +169,8 @@ else{
 // Save Attendance History
 // ==========================
 
-const historyList = document.getElementById("historyList");
 
-let history = JSON.parse(localStorage.getItem("attendanceHistory")) || [];
-console.log("Saving history...");   
+let history = JSON.parse(localStorage.getItem("attendanceHistory")) || []; 
 history.unshift({
     date: new Date().toLocaleString(),
     percentage: percentage.toFixed(2),
@@ -186,7 +182,6 @@ history.unshift({
 history = history.slice(0, 5);
 
 localStorage.setItem("attendanceHistory", JSON.stringify(history));
-console.log(localStorage.getItem("attendanceHistory"));
 
 loadHistory();
 // ==========================
@@ -275,79 +270,85 @@ document.getElementById("missedClasses").textContent = "0";
 document.getElementById("attendancePercent").textContent = "0%";
 
 }
-let deferredPrompt;
+// ==========================
+// Install App
+// ==========================
 
 const installBtn = document.getElementById("installBtn");
 
-window.addEventListener("beforeinstallprompt", (e) => {
+if (installBtn) {
 
-    e.preventDefault();
+    let deferredPrompt;
 
-    deferredPrompt = e;
+    window.addEventListener("beforeinstallprompt", (e) => {
 
-    installBtn.style.display = "block";
+        e.preventDefault();
 
-});
+        deferredPrompt = e;
 
-installBtn.addEventListener("click", async () => {
+        installBtn.style.display = "block";
 
-    installBtn.style.display = "none";
+    });
 
-    deferredPrompt.prompt();
+    installBtn.addEventListener("click", async () => {
 
-    const { outcome } = await deferredPrompt.userChoice;
+        installBtn.style.display = "none";
 
-    console.log(outcome);
+        deferredPrompt.prompt();
 
-    deferredPrompt = null;
+        const { outcome } = await deferredPrompt.userChoice;
 
-});
-window.addEventListener("appinstalled", () => {
+        console.log(outcome);
 
-    installBtn.style.display = "none";
+        deferredPrompt = null;
 
-    console.log("🎉 AttendEase Installed Successfully");
+    });
 
-});
+    window.addEventListener("appinstalled", () => {
+
+        installBtn.style.display = "none";
+
+        console.log("🎉 AttendEase Installed Successfully");
+
+    });
+}
+
 // ==========================
 // Theme Toggle
 // ==========================
 
-// ==========================
-// Theme Toggle + Save Theme
-// ==========================
-
 const themeBtn = document.getElementById("themeBtn");
 
-// Load saved theme
-if(localStorage.getItem("theme") === "dark"){
+if (themeBtn) {
 
-    document.body.classList.add("dark-mode");
+    // Load Saved Theme
+    if (localStorage.getItem("theme") === "dark") {
 
-    themeBtn.textContent = "☀️";
-
-}
-
-// Toggle Theme
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-    if(document.body.classList.contains("dark-mode")){
-
+        document.body.classList.add("dark-mode");
         themeBtn.textContent = "☀️";
-
-        localStorage.setItem("theme","dark");
-
-    }else{
-
-        themeBtn.textContent = "🌙";
-
-        localStorage.setItem("theme","light");
 
     }
 
-});
+    // Toggle Theme
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+
+            themeBtn.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            themeBtn.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+
+        }
+
+    });
+
+}
 function loadHistory(){
 
     const historyList = document.getElementById("historyList");
@@ -431,3 +432,94 @@ window.addEventListener("load", () => {
     }, 2000);
 
 });
+function $(id) {
+    return document.getElementById(id);
+}
+
+function calculateBunk(){
+
+    let attended = Number(document.getElementById("attended").value);
+
+let total = Number(document.getElementById("total").value);
+
+let target = Number(document.getElementById("target").value);
+
+let result = document.getElementById("result");
+
+let bunkResult = document.getElementById("bunkResult");
+
+if(attended <= 0 || total <= 0){
+
+    result.innerHTML = "❌ Enter valid numbers.";
+
+    bunkResult.innerHTML = "";
+
+    return;
+
+}
+
+if(attended > total){
+
+    result.innerHTML = "❌ Attended cannot be greater than Total.";
+
+    bunkResult.innerHTML = "";
+
+    return;
+
+}
+
+let percentage = (attended / total) * 100;
+const circle = document.getElementById("progressCircle");
+const text = document.getElementById("progressText");
+
+const radius = 70;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset =
+    circumference - (percentage / 100) * circumference;
+
+text.innerHTML = percentage.toFixed(1) + "%";
+if (percentage < 75) {
+
+    circle.style.stroke = "#ef4444";
+
+}
+else if (percentage < 90) {
+
+    circle.style.stroke = "#facc15";
+
+}
+else {
+
+    circle.style.stroke = "#22c55e";
+
+}
+
+result.innerHTML = `
+<h3>📊 Current Attendance</h3>
+<h2>${percentage.toFixed(2)}%</h2>
+`;
+
+let bunk = 0;
+
+while ((attended / (total + bunk)) * 100 >= target) {
+
+    bunk++;
+
+}
+
+bunk--;
+
+if (bunk < 0) {
+
+    bunk = 0;
+
+}
+
+bunkResult.innerHTML = `
+<h3>😎 You Can Bunk</h3>
+<h2>${bunk} Classes</h2>
+`;
+
+}
