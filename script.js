@@ -347,3 +347,27 @@ if (clearBtn) {
     });
 
 }
+// ==========================
+// Premium Loader
+// ==========================
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    const app = document.querySelector(".container");
+
+    // Hide app initially
+    app.style.opacity = "0";
+
+    setTimeout(() => {
+
+        loader.classList.add("hide");
+
+        app.style.transition = "opacity .8s ease";
+
+        app.style.opacity = "1";
+
+    }, 2000);
+
+});
