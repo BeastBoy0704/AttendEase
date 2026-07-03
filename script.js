@@ -468,6 +468,8 @@ if(attended > total){
 let percentage = (attended / total) * 100;
 const circle = document.getElementById("progressCircle");
 const text = document.getElementById("progressText");
+console.log(circle);
+console.log(text);
 
 const radius = 70;
 const circumference = 2 * Math.PI * radius;
