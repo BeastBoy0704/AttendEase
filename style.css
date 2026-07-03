@@ -1221,3 +1221,153 @@ body.dark-mode::before{
     transition:opacity .8s ease;
 
 }
+/* ===========================
+   Analytics Dashboard
+=========================== */
+
+.analytics-card{
+
+    margin-top:30px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    animation:fadeUp .8s ease;
+
+}
+
+.analytics-card h2{
+
+    text-align:center;
+
+    color:white;
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+
+.analytics-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.analytics-box{
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:16px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.analytics-box:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(59,130,246,.35);
+
+}
+
+.analytics-box span{
+
+    display:block;
+
+    color:#cbd5e1;
+
+    font-size:16px;
+
+    margin-bottom:10px;
+
+}
+
+.analytics-box h3{
+
+    color:white;
+
+    font-size:34px;
+
+    margin:0;
+
+}
+/* ===========================
+   Goal Tracker
+=========================== */
+
+.goal-card{
+
+    margin-top:25px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    color:white;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.2);
+
+}
+
+.goal-card h2{
+
+    margin-bottom:15px;
+
+}
+
+.goal-bar{
+
+    width:100%;
+
+    height:14px;
+
+    background:rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:15px 0;
+
+}
+
+#goalProgress{
+
+    height:100%;
+
+    width:0%;
+
+    background:linear-gradient(90deg,#ef4444,#facc15,#22c55e);
+
+    transition:0.6s ease;
+
+}

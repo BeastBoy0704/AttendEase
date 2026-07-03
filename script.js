@@ -189,6 +189,54 @@ localStorage.setItem("attendanceHistory", JSON.stringify(history));
 console.log(localStorage.getItem("attendanceHistory"));
 
 loadHistory();
+// ==========================
+// Goal Tracker (ADD HERE)
+// ==========================
+
+document.getElementById("goalTarget").textContent = target + "%";
+
+document.getElementById("goalCurrent").textContent =
+    percentage.toFixed(2) + "%";
+
+const goalProgress = document.getElementById("goalProgress");
+const goalMessage = document.getElementById("goalMessage");
+
+let progressPercent = (percentage / target) * 100;
+
+if (progressPercent > 100) progressPercent = 100;
+
+goalProgress.style.width = progressPercent + "%";
+
+let diff = (target - percentage).toFixed(2);
+
+if (percentage >= target) {
+
+    goalMessage.textContent = "🎉 Goal Achieved!";
+
+    goalProgress.style.background = "#22c55e";
+
+} else {
+
+    goalMessage.textContent = diff + "% Away From Goal";
+
+    if (diff <= 5) {
+        goalProgress.style.background = "#facc15";
+    } else {
+        goalProgress.style.background = "#ef4444";
+    }
+}
+// ==========================
+// Analytics Dashboard
+// ==========================
+
+document.getElementById("totalClasses").textContent = total;
+
+document.getElementById("attendedClasses").textContent = attended;
+
+document.getElementById("missedClasses").textContent = total - attended;
+
+document.getElementById("attendancePercent").textContent =
+    percentage.toFixed(2) + "%";
 }
 function resetForm(){
 
@@ -213,6 +261,18 @@ const circumference = 2 * Math.PI * radius;
 circle.style.strokeDasharray = circumference;
 circle.style.strokeDashoffset = circumference;
 text.innerHTML = "0%";
+document.getElementById("goalTarget").textContent = "0%";
+document.getElementById("goalCurrent").textContent = "0%";
+document.getElementById("goalProgress").style.width = "0%";
+document.getElementById("goalMessage").textContent = "Set your target";
+
+document.getElementById("totalClasses").textContent = "0";
+
+document.getElementById("attendedClasses").textContent = "0";
+
+document.getElementById("missedClasses").textContent = "0";
+
+document.getElementById("attendancePercent").textContent = "0%";
 
 }
 let deferredPrompt;
