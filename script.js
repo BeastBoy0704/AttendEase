@@ -174,7 +174,7 @@ else{
 const historyList = document.getElementById("historyList");
 
 let history = JSON.parse(localStorage.getItem("attendanceHistory")) || [];
-
+console.log("Saving history...");   
 history.unshift({
     date: new Date().toLocaleString(),
     percentage: percentage.toFixed(2),
@@ -186,6 +186,7 @@ history.unshift({
 history = history.slice(0, 5);
 
 localStorage.setItem("attendanceHistory", JSON.stringify(history));
+console.log(localStorage.getItem("attendanceHistory"));
 
 loadHistory();
 }
@@ -301,23 +302,7 @@ function loadHistory(){
         return;
 
     }
-    // Load history when page opens
-loadHistory();
-
-// Clear History Button
-const clearBtn = document.getElementById("clearHistoryBtn");
-
-clearBtn.addEventListener("click", () => {
-
-    if(confirm("Clear all attendance history?")){
-
-        localStorage.removeItem("attendanceHistory");
-
-        loadHistory();
-
-    }
-
-});
+   
 
     historyList.innerHTML = "";
 
@@ -336,6 +321,28 @@ clearBtn.addEventListener("click", () => {
 
         </div>
         `;
+
+    });
+
+}
+
+// Load history when page opens
+loadHistory();
+
+// Clear History Button
+const clearBtn = document.getElementById("clearHistoryBtn");
+
+if (clearBtn) {
+
+    clearBtn.addEventListener("click", () => {
+
+        if (confirm("Clear all attendance history?")) {
+
+            localStorage.removeItem("attendanceHistory");
+
+            loadHistory();
+
+        }
 
     });
 
