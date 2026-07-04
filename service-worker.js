@@ -1,24 +1,20 @@
-const CACHE_NAME = "attendease-v2";
+const CACHE_NAME = "attendease-v1";
 
-const FILES_TO_CACHE = [
+const FILES = [
   "/",
   "/index.html",
+  "/calculator.html",
   "/style.css",
   "/script.js",
-  "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png",
-  "/favicon.png"
+  "/manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
+      return cache.addAll(FILES);
     })
   );
-
-  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
